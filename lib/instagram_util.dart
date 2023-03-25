@@ -1,13 +1,10 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 
 class InstagramUtil {
   static Future<String> getDownloadUrl(String url) async {
     var linkEdit = url.replaceAll(" ", "").split("/");
     var response = await Dio().get(Uri.parse(
-            '${linkEdit[0]}//${linkEdit[2]}/${linkEdit[3]}/${linkEdit[4]}' +
-                "?__a=1&__d=dis")
+            '${linkEdit[0]}//${linkEdit[2]}/${linkEdit[3]}/${linkEdit[4]}?__a=1&__d=dis')
         .toString());
     var data = response.data;
     var graphql = data['graphql'];
@@ -19,8 +16,7 @@ class InstagramUtil {
   static Future<String> getPreviewUrl(String url) async {
     var linkEdit = url.replaceAll(" ", "").split("/");
     var response = await Dio().get(Uri.parse(
-            '${linkEdit[0]}//${linkEdit[2]}/${linkEdit[3]}/${linkEdit[4]}' +
-                "?__a=1&__d=dis")
+            '${linkEdit[0]}//${linkEdit[2]}/${linkEdit[3]}/${linkEdit[4]}?__a=1&__d=dis')
         .toString());
     var data = response.data;
     var graphql = data['graphql'];

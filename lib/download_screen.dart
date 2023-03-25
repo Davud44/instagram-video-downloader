@@ -100,53 +100,55 @@ class _DownloadScreenState extends State<DownloadScreen> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          _getPreviewUrl();
-                        },
-                        child: _previewLoading
-                            ? const SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator.adaptive(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                      Colors.white),
-                                ))
-                            : const Text('Yapışdır')),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Expanded(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          _getDownloadUrl();
-                        },
-                        child: _videoDownloading
-                            ? const SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator.adaptive(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                      Colors.white),
-                                ))
-                            : const Text('Yüklə')),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              if (_previewUrl != null) ...[Image.network(_previewUrl!)]
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                          onPressed: () {
+                            _getPreviewUrl();
+                          },
+                          child: _previewLoading
+                              ? const SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator.adaptive(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.white),
+                                  ))
+                              : const Text('Yapışdır')),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: ElevatedButton(
+                          onPressed: () {
+                            _getDownloadUrl();
+                          },
+                          child: _videoDownloading
+                              ? const SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator.adaptive(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.white),
+                                  ))
+                              : const Text('Yüklə')),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                if (_previewUrl != null) ...[Image.network(_previewUrl!)]
+              ],
+            ),
           ),
         ),
       ),
